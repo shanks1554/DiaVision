@@ -65,6 +65,8 @@ def go_home():
 # ---- Home Page ----
 if st.session_state.page == "home":
     st.title("Welcome to the Diabetes Prediction System")
+    st.write("Diabetes is a growing health concern worldwide, and maintaining a balanced lifestyle is key to prevention. This project combines the ancient wisdom of Ayurveda with modern data analysis to help individuals assess their diabetes risk and make informed health decisions. Ayurveda emphasizes the role of Prakriti (body constitution) in overall well-being, and this platform utilizes these principles to offer personalized insights.")
+    st.write("With a holistic approach, this project enables users to understand their unique body type and how lifestyle choices impact their health. It bridges the gap between traditional medicine and science, empowering individuals with valuable recommendations for a healthier life. Whether you are looking to gain awareness, take preventive steps, or adopt Ayurveda-based lifestyle modifications, this tool provides an easy and effective way to start your journey toward better health.")
     st.write("Click the button below to start your prediction.")
     if st.button("Go to Prediction System"):
         go_to_prediction()
@@ -127,9 +129,9 @@ elif st.session_state.page == "prediction":
             prediction_proba = model.predict_proba(input_data)[0][1] * 100
 
             if prediction == 1:
-                st.error(f"⚠️ High Risk of Diabetes ({prediction_proba:.2f}% confidence)")
+                st.error(f"⚠️ Risk of Diabetes ({prediction_proba:.2f}% confidence)")
             else:
-                st.success(f"✅ Low Risk of Diabetes ({100 - prediction_proba:.2f}% confidence)")
+                st.success(f"✅ Risk of Diabetes ({100 - prediction_proba:.2f}% confidence)")
 
         except Exception as e:
             st.error(f"Error making prediction: {e}")
